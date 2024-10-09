@@ -26,10 +26,20 @@ model.save('handwritten.keras')
 
 model = tf.keras.models.load_model('handwritten.keras')
 
-loss, accuracy = model.evaluate(x_test, y_test)
+image_number = 1
+while os.path.isfile(f"digits/digit{image_number}.png"):
+    try:
+        img = cv2.imread(f"digit/digits{image_number}.png")[:,:,0]
+        img = np.invert(np.array([img]))
+        prediction = model.predict(img)
+        print("This digit is {np.argmax(prediction)}")
+        plt.imshow(img[0], cmap=plt.cm.binary)
+        plt.show()
+    except:
+        print("Error!")
+    finally:
+        image_number += 1
 
-print(loss)
-print(accuracy)
 
 
 
