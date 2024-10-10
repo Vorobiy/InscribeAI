@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 print("Welcome to the NeuralNine (c) Handwritten Digits Recognition v0.1")
 
 # Decide if to load an existing model or to train a new one
-train_new_model = True
+train_new_model = False
 
 if train_new_model:
     # Loading the MNIST data set with samples and splitting it
@@ -48,7 +48,7 @@ if train_new_model:
     model.save('handwritten_digits.keras')
 else:
     # Load the model
-    model = tf.keras.models.load_model('handwritten_digits.model')
+    model = tf.keras.models.load_model('handwritten_digits.keras')
 
 # Load custom images and predict them
 image_number = 1
